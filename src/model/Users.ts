@@ -34,25 +34,7 @@ UserSchema.pre('save', async function (next) {
     }
     next();
    });
-// UserSchema.pre("save",async(next)=>{
-//     // get the current user document
-//     const user=this as unknown as IUserDocument;
-//     // if password is not modified, continue
-//     if(!user.isModified('password')) return next();
-//             // hash the password with a salt work factor
-//     try {
-//         user.password=await bcrypt.hash(user.password,SALT_WORK_FACTOR);
-//         // proceed to the next middleware
-//         return next();
-//     } catch (error) {
-//                 // log the error and throw it
-//         console.log(error);
-        
-//         throw error;
-//     }
-//         // proceed to the next middleware
-// next()
-// })
+
 const Users=model("Users",UserSchema)
 
 export const setUsers=async(values:Record<string,any>)=>{

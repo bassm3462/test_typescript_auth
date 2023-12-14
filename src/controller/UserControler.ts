@@ -28,9 +28,9 @@ export const AddUsers = async (req: Request, res: Response) => {
       console.log("error", error);
     });
 };
-export const Login = async(req: Request, res: Response) => {
+export const Login = async (req: Request, res: Response) => {
   console.log(req.body);
-  
+
   const { email, password } = req.body;
   const checkEmail = await Users.findOne({ email: email });
   if (!checkEmail) {
@@ -41,7 +41,7 @@ export const Login = async(req: Request, res: Response) => {
     return res.status(401).send("Invalid Email or Password");
   }
   let token = jwt.sign({ _id: checkEmail._id }, "token"!);
-  return res.header("auth-Token", token).json({checkEmail,token});
+  return res.header("auth-Token", token).json({ checkEmail, token });
 };
 export const GetAllUsers = async (_req: Request, res: Response) => {
   try {
@@ -52,10 +52,11 @@ export const GetAllUsers = async (_req: Request, res: Response) => {
   }
 };
 export const GetOneUser = async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const userDetails = await getUserById(id);
-  if (!userDetails) {
-    return res.status(404).json({ message: "user not found" });
-  }
-  res.json(userDetails);
+  res.send("helllllllloo oo oo ooo ooo ")
+  // const id = req.params.id;
+  // const userDetails = await getUserById(id);
+  // if (!userDetails) {
+  //   return res.status(404).json({ message: "user not found" });
+  // }
+  // res.json(userDetails);
 };
